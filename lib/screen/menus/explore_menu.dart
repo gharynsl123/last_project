@@ -95,7 +95,7 @@ final List<Widget> imageSliders = dataCarousel
             child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 child: Stack(
-                  children: <Widget>[
+                  children: [
                     Image.network(item.image, fit: BoxFit.cover, width: 1000),
                     Positioned(
                       bottom: 0.0,
