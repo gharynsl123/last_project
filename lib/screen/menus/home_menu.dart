@@ -136,12 +136,13 @@ class _HomeMenuState extends State<HomeMenu> {
                           height: 180,
                           width: 190,
                           margin: const EdgeInsets.only(right: 15),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
+                          child: Hero(
+                            tag: lastSeenList[index].image,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.network(
                                 lastSeenList[index].image,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
