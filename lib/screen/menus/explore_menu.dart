@@ -3,8 +3,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:last_project/data/dataList_Explore.dart';
 import 'package:last_project/data/dataList_home.dart';
 
-
-
 class ExploreMenu extends StatefulWidget {
   const ExploreMenu({Key? key}) : super(key: key);
 
@@ -54,35 +52,53 @@ class _ExploreMenuState extends State<ExploreMenu> {
       ),
       body: SafeArea(
         child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Expanded(
+            child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Expanded(
                   child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    children: lastSeenList.map((item) => Card(
-                      color: Colors.transparent,
-                      elevation: 0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: NetworkImage(item.image),
-                            fit: BoxFit.cover
-                          )
-                        ),
-                      ),
-                    )).toList(),
-                  )
-                )
-              
-              ],
-            ),
-          )
-        ),
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: lastSeenList
+                    .map((item) => Card(
+                          color: Colors.transparent,
+                          elevation: 0,
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: NetworkImage(item.image),
+                                      fit: BoxFit.cover),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 20,
+                                right: 20,
+                                child: Container(
+                                  color: Colors.black.withOpacity(0.5),
+                                  child: Text(
+                                    item.title,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ))
+                    .toList(),
+              ))
+            ],
+          ),
+        )),
       ),
     );
   }
@@ -116,7 +132,7 @@ final List<Widget> imageSliders = dataCarousel
                             vertical: 10.0, horizontal: 20.0),
                         child: Text(
                           item.title,
-                          style:const  TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
