@@ -66,6 +66,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             color: Colors.white,
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis
                           ),
                         ),
                         const SizedBox(height: 10),
